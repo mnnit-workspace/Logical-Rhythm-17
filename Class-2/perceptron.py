@@ -19,6 +19,7 @@ def train_weights(train, l_rate, n_epoch):
             prediction = predict(row, weights)
             error = row[-1] - prediction
             sum_error += error**2
+            # Threshold updation
             weights[0] = weights[0] + l_rate * error
             for i in range(len(row)-1):
                 weights[i + 1] = weights[i + 1] + l_rate * error * row[i]
@@ -48,7 +49,7 @@ l_rate = 0.01
 n_epoch = 2
 weights = train_weights(dataset, l_rate, n_epoch)
 
-plt.pause(10)
+plt.pause(1000)
 
 print("---------Results---------")
 print("Final weights:", weights)
